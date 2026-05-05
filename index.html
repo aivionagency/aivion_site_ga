@@ -1213,7 +1213,8 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
   const CELL = 44;
   const SPX = 0.4;
   const SPY = 0.3;
-  const canAnimate = false;
+  // 1. Снимаем блокировку, разрешаем анимацию
+  const canAnimate = true;
   let offX = 0;
   let offY = 0;
   let active = false;
@@ -1231,12 +1232,17 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
 
   function tick() {
     if(!active) return;
-    offX = (offX + SPX) % CELL;
-    offY = (offY + SPY) % CELL;
-    patBase.setAttribute('x', String(offX));
-    patBase.setAttribute('y', String(offY));
-    patReveal.setAttribute('x', String(offX));
-    patReveal.setAttribute('y', String(offY));
+
+    // 2. Двигаем сетку ТОЛЬКО если экран шире 900px (ПК)
+    if (window.innerWidth > 900) {
+      offX = (offX + SPX) % CELL;
+      offY = (offY + SPY) % CELL;
+      patBase.setAttribute('x', String(offX));
+      patBase.setAttribute('y', String(offY));
+      patReveal.setAttribute('x', String(offX));
+      patReveal.setAttribute('y', String(offY));
+    }
+
     rafId = requestAnimationFrame(tick);
   }
 
@@ -1251,9 +1257,12 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
   }
 
   section.addEventListener('mousemove', event => {
-    const rect = section.getBoundingClientRect();
-    section.style.setProperty('--cx', `${event.clientX - rect.left}px`);
-    section.style.setProperty('--cy', `${event.clientY - rect.top}px`);
+    // 3. Подсветка (эффект фонарика) тоже работает только на ПК
+    if (window.innerWidth > 900) {
+      const rect = section.getBoundingClientRect();
+      section.style.setProperty('--cx', `${event.clientX - rect.left}px`);
+      section.style.setProperty('--cy', `${event.clientY - rect.top}px`);
+    }
   }, { passive:true });
 
   section.addEventListener('mouseleave', () => {
@@ -1263,6 +1272,7 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
 
   setSize();
   window.addEventListener('resize', setSize);
+
   if(canAnimate && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
       setActive(entries.some(entry => entry.isIntersecting));
@@ -1272,7 +1282,6 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
     setActive(true);
   }
 })();
-
 /* ═══ HERO PANELS ══════════════════════════════════════════ */
 (function() {
   const heroEl=document.getElementById('hero');
