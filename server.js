@@ -18,8 +18,7 @@ const contentTypes = {
 function resolvePath(urlPath) {
   if (urlPath === "/" || urlPath === "/Aivion.html") return "index.html";
 
-  // ПРАГМАТИЧНЫЙ РОУТИНГ ДЛЯ ЮР. ДОКУМЕНТОВ:
-  // Гарантирует корректное чтение файлов, даже если в ссылке на сайте не указано .html
+  // ЖЕСТКИЙ ПРАГМАТИЧНЫЙ РОУТИНГ: Склеиваем чистый URL сайта с реальным физическим файлом на диске
   if (urlPath === "/privacy" || urlPath === "/privacy.html") return "privacy.html";
   if (urlPath === "/consent" || urlPath === "/consent.html") return "consent.html";
 
@@ -41,7 +40,6 @@ async function serveFile(relativePath) {
   const file = Bun.file(`${root}/${relativePath}`);
 
   if (!(await file.exists())) {
-    console.error(`[404 NOT FOUND]: Ошибка чтения пути "${root}/${relativePath}"`);
     return new Response("Файл не найден", { status: 404 });
   }
 
@@ -57,46 +55,31 @@ Bun.serve({
   async fetch(request) {
     const url = new URL(request.url);
 
-    // 1. ОБРАБОТКА КОНТУРА ЗАЯВОК (POST API)
+    // ИНТЕГРАЦИЯ БЭКЕНД-КОНТУРА ДЛЯ ФОРМЫ ОБРАТНОЙ СВЯЗИ
     if (request.method === "POST" && url.pathname === "/api/contact") {
       try {
         const body = await request.json();
 
-        // Проверка скрытого поля Honeypot против спам-ботов
+        // Honeypot ловушка против спам-ботов
         if (body.website && body.website.trim() !== "") {
-          console.warn("[Honeypot]: Заблокирована автоматическая отправка ботом.");
-          return new Response(JSON.stringify({ ok: true, message: "Silent drop" }), {
+          return new Response(JSON.stringify({ ok: true, message: "Spam drop" }), {
             headers: { "Content-Type": "application/json" }
           });
         }
 
-        // Валидация обязательных полей
-        if (!body.firstName || !body.contact || !body.details) {
-          return new Response(JSON.stringify({ ok: false, message: "Заполните обязательные поля." }), {
-            status: 400,
-            headers: { "Content-Type": "application/json" }
-          });
-        }
-
-        // Вывод лида в консоль сервера (здесь можно подключить интеграцию с Telegram-ботом/CRM)
-        console.log("[Новая заявка с сайта]:", JSON.stringify(body, null, 2));
-
+        console.log("[Новая заявка с формы]:", body);
         return new Response(JSON.stringify({ ok: true }), {
           status: 200,
           headers: { "Content-Type": "application/json" }
         });
-
       } catch (err) {
-        console.error("[API Error]:", err);
-        return new Response(JSON.stringify({ ok: false, message: "Внутренняя ошибка сервера." }), {
-          status: 500,
-          headers: { "Content-Type": "application/json" }
-        });
+        return new Response(JSON.stringify({ ok: false, error: "Malformed JSON" }), { status: 400 });
       }
     }
 
-    // 2. ОБРАБОТКА СТАТИКИ (GET запросы страниц, скриптов, стилей)
+    // СТАНДАРТНАЯ ОТДАЧА СТАТИКИ С УЧЕТОМ ИСПРАВЛЕННОГО РОУТИНГА
     const relativePath = resolvePath(url.pathname);
+
     if (!relativePath) {
       return new Response("Некорректный путь", { status: 400 });
     }
@@ -105,4 +88,4 @@ Bun.serve({
   }
 });
 
-console.log(`Сервер успешно запущен на порту: ${port}`);
+console.log(`Сервер запущен: http://localhost:${port}`);
