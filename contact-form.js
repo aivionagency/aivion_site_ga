@@ -129,11 +129,11 @@
             <div class="cf-consents">
               <label class="cf-consent">
                 <input type="checkbox" name="policyAccepted" value="yes" required/>
-                <span>Я ознакомился(ась) с <a href="/privacy" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных</a>.</span>
+                <span>Я ознакомился(ась) с <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных</a>.</span>
               </label>
               <label class="cf-consent">
                 <input type="checkbox" name="consentAccepted" value="yes" required/>
-                <span>Даю согласие на обработку моих персональных данных в соответствии с <a href="/consent" target="_blank" rel="noopener noreferrer">текстом согласия</a>.</span>
+                <span>Даю согласие на обработку моих персональных данных в соответствии с <a href="/consent.html" target="_blank" rel="noopener noreferrer">текстом согласия</a>.</span>
               </label>
             </div>
             <p class="cf-legal">Если вы не дадите согласие на обработку данных, мы не сможем обработать заявку.</p>
