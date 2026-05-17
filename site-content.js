@@ -207,37 +207,42 @@ window.siteContent = {
   setText(document.querySelector(".contact-scope h3"), content.modal.scopeTitle);
   setTextList(Array.from(document.querySelectorAll(".contact-scope li")), content.modal.scopeItems);
 
-  const form = document.getElementById("contactForm");
+  const form = document.getElementById("cfForm");
+
   if (form) {
-    const firstNameField = form.querySelector('input[name="firstName"]')?.closest(".field");
-    const companyField = form.querySelector('input[name="company"]')?.closest(".field");
-    const contactField = form.querySelector('input[name="contact"]')?.closest(".field");
-    const methodField = form.querySelector('select[name="contactMethod"]')?.closest(".field");
-    const customRoleField = document.getElementById("customRoleField");
-    const detailsField = form.querySelector('textarea[name="details"]')?.closest(".field");
+      // Корректно маппим врапперы полей с новыми классами
+      const firstNameField = form.querySelector('input[name="firstName"]')?.closest(".cf-label");
+      const companyField = form.querySelector('input[name="company"]')?.closest(".cf-label");
+      const contactField = form.querySelector('input[name="contact"]')?.closest(".cf-label");
+      const methodField = form.querySelector('select[name="contactMethod"]')?.closest(".cf-label");
+      const customRoleField = document.getElementById("cfCustomRole");
+      const detailsField = form.querySelector('textarea[name="details"]')?.closest(".cf-label");
 
-    setText(firstNameField?.querySelector("span"), content.modal.fields.firstName);
-    setText(companyField?.querySelector("span"), content.modal.fields.company);
-    setText(contactField?.querySelector("span"), content.modal.fields.contact);
-    form.querySelector('input[name="contact"]')?.setAttribute("placeholder", content.modal.fields.contactPlaceholder);
-    setText(methodField?.querySelector("span"), content.modal.fields.contactMethod);
-    setText(form.querySelector(".choice-group legend"), content.modal.fields.roleLegend);
-    Array.from(form.querySelectorAll('.choice-chip span')).forEach((node, index) => {
-      setText(node, content.modal.fields.roles[index]);
-    });
-    setText(customRoleField?.querySelector("span"), content.modal.fields.customRole);
-    setText(detailsField?.querySelector("span"), content.modal.fields.details);
-    form.querySelector('textarea[name="details"]')?.setAttribute("placeholder", content.modal.fields.detailsPlaceholder);
+      setText(firstNameField?.querySelector("span"), content.modal.fields.firstName);
+      setText(companyField?.querySelector("span"), content.modal.fields.company);
+      setText(contactField?.querySelector("span"), content.modal.fields.contact);
+      form.querySelector('input[name="contact"]')?.setAttribute("placeholder", content.modal.fields.contactPlaceholder);
+      setText(methodField?.querySelector("span"), content.modal.fields.contactMethod);
 
-    Array.from(form.querySelectorAll('select[name="contactMethod"] option')).forEach((node, index) => {
-      setText(node, content.modal.contactMethods[index]);
-    });
+      setText(form.querySelector(".cf-roles legend"), content.modal.fields.roleLegend);
+      Array.from(form.querySelectorAll('.cf-chip span')).forEach((node, index) => {
+        setText(node, content.modal.fields.roles[index]);
+      });
 
-    const consentText = form.querySelectorAll(".consent-check span");
-    setHtml(consentText[0], content.modal.policyHtml);
-    setHtml(consentText[1], content.modal.consentHtml);
-    setText(form.querySelector(".form-legal-note"), content.modal.legalNote);
-    setText(document.getElementById("submitButton"), content.modal.submit);
+      setText(customRoleField?.querySelector("span"), content.modal.fields.customRole);
+      setText(detailsField?.querySelector("span"), content.modal.fields.details);
+      form.querySelector('textarea[name="details"]')?.setAttribute("placeholder", content.modal.fields.detailsPlaceholder);
+
+      Array.from(form.querySelectorAll('select[name="contactMethod"] option')).forEach((node, index) => {
+        setText(node, content.modal.contactMethods[index]);
+      });
+
+      const consentTexts = form.querySelectorAll(".cf-consent span");
+      if(consentTexts[0]) setHtml(consentTexts[0], content.modal.policyHtml);
+      if(consentTexts[1]) setHtml(consentTexts[1], content.modal.consentHtml);
+
+      setText(form.querySelector(".cf-legal"), content.modal.legalNote);
+      setText(document.getElementById("cfSubmitBtn"), content.modal.submit);
   }
 
   window.formMessages = content.modal.messages;

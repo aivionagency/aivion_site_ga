@@ -209,6 +209,16 @@
       status.className = 'cf-status';
       try {
         const data = new FormData(form);
+        const botTrap = String(data.get('website') || '').trim();
+
+        if (botTrap !== '') {
+          // Имитируем успешный ответ для спам-скрипта без триггера сети
+          status.textContent = 'Запрос отправлен. Скоро свяжемся с вами.';
+          status.className = 'cf-status is-success';
+          form.reset();
+          setTimeout(() => closeModal(), 900);
+          return;
+        }
         const payload = {
           firstName: String(data.get('firstName') || '').trim(),
           company: String(data.get('company') || '').trim(),

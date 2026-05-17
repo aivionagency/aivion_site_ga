@@ -50,8 +50,48 @@ Bun.serve({
   port,
   async fetch(request) {
     const url = new URL(request.url);
-    const relativePath = resolvePath(url.pathname);
 
+    // Роутинг для API обработки заявок
+    if (request.method === "POST" && url.pathname === "/api/contact") {
+      try {
+        const body = await request.json();
+
+        // 1. Проверка Honeypot-ловушки для ботов
+        if (body.website && body.website.trim() !== "") {
+          console.warn(`[Honeypot Triggered] Бот заблокирован. Payload:`, body);
+          // Возвращаем успех, чтобы спамер думал, что всё ок, но не пускаем дальше
+          return new Response(JSON.stringify({ ok: true, msg: "Silent drop" }), {
+            headers: { "Content-Type": "application/json" }
+          });
+        }
+
+        // 2. Валидация критически важных полей
+        if (!body.firstName || !body.contact || !body.details) {
+          return new Response(JSON.stringify({ ok: false, message: "Проверьте обязательные поля." }), {
+            status: 400,
+            headers: { "Content-Type": "application/json" }
+          });
+        }
+
+        // 3. Логирование и дальнейшая обработка данных (сюда встраивается отправка в Telegram/CRM)
+        console.log(`[New Lead Received]:`, JSON.stringify(body, null, 2));
+
+        return new Response(JSON.stringify({ ok: true }), {
+          status: 200,
+          headers: { "Content-Type": "application/json" }
+        });
+
+      } catch (err) {
+        console.error(`[API Error]:`, err);
+        return new Response(JSON.stringify({ ok: false, message: "Внутренняя ошибка сервера." }), {
+          status: 500,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+    }
+
+    // Роутинг для статических файлов
+    const relativePath = resolvePath(url.pathname);
     if (!relativePath) {
       return new Response("Некорректный путь", { status: 400 });
     }
