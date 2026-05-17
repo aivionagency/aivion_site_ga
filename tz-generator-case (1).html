@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Корпоративная система PBMS · Aivion</title>
-  <meta name="description" content="Кейс о разработке корпоративной PBMS-системы: единое управление проектами, автоматические бэкапы и прозрачный аудит действий."/>
+  <title>AI-ассистент генерации ТЗ · Aivion</title>
+  <meta name="description" content="Кейс о том, как AI-ассистент генерации ТЗ ускорил подготовку дизайн-спецификаций для FinTech и SaaS: стандартизировал документацию и сократил рутину команды"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Raleway:wght@600;700&display=swap" rel="stylesheet"/>
@@ -41,25 +42,41 @@
     .bg-orb--amber{width:20%;height:20%;left:-10%;bottom:-15%;background:radial-gradient(circle,rgba(255,170,0,.025) 0%,rgba(245,128,20,.01) 50%,transparent 70%);animation-duration:24s;animation-direction:reverse}
     .bg-orb--sun{width:12%;height:12%;right:12%;top:-5%;background:radial-gradient(circle,rgba(255,224,120,.015) 0%,transparent 68%);filter:blur(55px);animation-duration:15s}
     .light-source{position:absolute;pointer-events:none;z-index:3;mix-blend-mode:screen;border-radius:50%;animation:orbFloat ease-in-out infinite alternate}
-    .light-source--top-right{width:42%;height:42%;right:-18%;top:-18%;background:radial-gradient(circle, rgba(232,146,10,0.38) 0%, rgba(200,90,0,0.14) 50%, transparent 72%);filter:blur(80px);animation-duration:20s}
-    .light-source--hero-focus{width:44%;height:44%;left:-14%;bottom:-18%;background:radial-gradient(circle, rgba(30,80,200,0.28) 0%, rgba(10,40,140,0.10) 50%, transparent 72%);filter:blur(100px);animation-duration:26s}
+    .light-source--top-right{
+      width:42%;
+      height:42%;
+      right:-18%;
+      top:-18%;
+      background:radial-gradient(circle, rgba(232,146,10,0.38) 0%, rgba(200,90,0,0.14) 50%, transparent 72%);
+      filter:blur(80px);
+      animation-duration:20s;
+    }
+    .light-source--hero-focus{
+      width:44%;
+      height:44%;
+      left:-14%;
+      bottom:-18%;
+      background:radial-gradient(circle, rgba(30,80,200,0.28) 0%, rgba(10,40,140,0.10) 50%, transparent 72%);
+      filter:blur(100px);
+      animation-duration:26s;
+    }
     @keyframes orbFloat{0%{transform:translate(0,0) scale(1)}100%{transform:translate(2%,-3%) scale(1.06)}}
     .page-grid{display:none}
+ 
 
     header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);padding:0 clamp(20px,5vw,64px)}
     header::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0);border-bottom:1px solid rgba(255,255,255,0);transition:background .4s,border-color .4s}
     header.scrolled::before{background:rgba(0,0,0,0.72);backdrop-filter:blur(20px);border-color:rgba(255,255,255,0.08)}
     .header-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:24px;width:min(100%,1320px);height:100%;margin:0 auto}
-    .header-logo{font-family:"Raleway","Montserrat",sans-serif;font-weight:700;font-size:22px;letter-spacing:.02em;font-style:normal;color:#fff;text-decoration:none;flex-shrink:0}
+    .header-logo{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:22px;letter-spacing:.04em;font-style:italic;color:#fff;text-decoration:none;flex-shrink:0}
     .logo-dot{color:var(--accent)}
     .header-nav{display:flex;align-items:center;justify-content:flex-end;gap:4px;margin-left:auto}
     .nav-link{padding:8px 14px;border-radius:999px;border:1px solid transparent;text-decoration:none;color:rgba(235,235,235,0.52);font-size:12px;font-family:"Montserrat",sans-serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:color .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
     .nav-link:hover{color:var(--text)}
     .nav-cta{background:var(--accent);color:#1a0800 !important;font-weight:700;padding:10px 20px;border-radius:999px;box-shadow:0 0 0 1px rgba(232,146,10,0.15),0 8px 24px rgba(232,146,10,0.20);transition:background .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease) !important}
     .nav-cta:hover{background:#F5A822 !important;transform:translateY(-1px);box-shadow:0 0 0 1px rgba(232,146,10,0.25),0 12px 32px rgba(232,146,10,0.28) !important}
-    .cases-btn{display:inline-block;padding:9px 14px;border:1px solid rgba(255,255,255,.2);border-radius:4px;background:transparent;color:#A5A5A5;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:.2s;font-family:"Montserrat",sans-serif}
+    .cases-btn{padding:9px 14px;border:1px solid rgba(255,255,255,.2);border-radius:4px;background:transparent;color:#A5A5A5;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:.2s;display:inline-block}
     .cases-btn:hover{transform:translateY(-1px);color:#D0D0D0;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.35)}
-
     .nav-toggle{display:none;position:relative;z-index:101;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
     .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s var(--ease),opacity .3s var(--ease)}
     .nav-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -91,19 +108,17 @@
     .section-heading h2{font-size:clamp(28px,2.8vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.2}
     .case-body p{color:var(--text);margin-bottom:18px}
     .block-sep{border-top:1px solid var(--section-line);margin:56px 0}
+
     .problem-accent{color:var(--accent);font-weight:700}
 
-    .solution-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
-    .solution-card{padding:26px 28px;border:1px solid rgba(255,255,255,.18);border-radius:16px;background:rgba(255,255,255,.02)}
-    .solution-card h3{font-size:20px;line-height:1.25;margin-bottom:10px;color:var(--accent)}
-    .solution-card p{margin-bottom:0;color:var(--text)}
-
-    .architecture-system{position:relative;max-width:100%;margin:28px auto 28px}
-    .architecture-agents{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;z-index:3}
-    .agent-node{position:relative;width:100%;padding:26px 28px;border:1px solid rgba(255,255,255,.32);border-radius:14px;background:rgba(255,255,255,.01);box-shadow:none;opacity:0;transform:translateY(26px) scale(.98);transition:opacity .55s ease,transform .55s ease}
-    .agent-node.visible{opacity:1;transform:translateY(0) scale(1)}
-    .agent-node h4{font-size:16px;color:var(--accent);margin-bottom:4px}
-    .agent-node p{font-size:13px;line-height:1.6;color:var(--text);margin:0}
+    .solution-flow{display:grid;gap:14px;margin-top:22px}
+    .flow-step{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+    .flow-step:last-child{border-bottom:none}
+    .flow-dot{width:14px;height:14px;margin-top:11px;position:relative;display:inline-block}
+    .flow-dot::before,.flow-dot::after{content:"";position:absolute;left:50%;top:50%;width:2px;height:14px;background:var(--accent);transform:translate(-50%,-50%);border-radius:2px}
+    .flow-dot::after{transform:translate(-50%,-50%) rotate(90deg)}
+    .flow-step h3{font-size:20px;margin-bottom:6px;color:var(--text)}
+    .flow-step p{color:var(--muted)}
 
     .how-system-layout{display:block}
     .roadmap-copy{max-width:760px}
@@ -118,6 +133,28 @@
     .roadmap-item h4{font-size:18px;color:var(--accent);margin-bottom:6px}
     .roadmap-item p{color:var(--text);font-size:15px;line-height:1.7}
 
+    .architecture-system{position:relative;max-width:100%;margin:28px auto 28px}
+    .architecture-road{display:none}
+    .architecture-agents{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;z-index:3}
+    .agent-node{position:relative;width:100%;padding:26px 28px;border:1px solid rgba(255,255,255,.32);border-radius:14px;background:rgba(255,255,255,.01);box-shadow:none;opacity:0;transform:translateY(26px) scale(.98);transition:opacity .55s ease,transform .55s ease}
+    .agent-node.visible{opacity:1;transform:translateY(0) scale(1)}
+    .agent-node h4{font-size:16px;color:var(--accent);margin-bottom:4px}
+    .agent-node p{font-size:13px;line-height:1.6;color:var(--text);margin:0}
+
+    .solution-intro{max-width:900px}
+    .solution-intro p{margin-bottom:14px}
+    .solution-main-card{margin-top:26px;border:1px solid rgba(var(--accent-rgb),.35);background:linear-gradient(180deg,rgba(232,146,10,.08),rgba(255,255,255,.01));border-radius:18px;padding:24px}
+    .solution-main-card h3{font-size:24px;line-height:1.25;margin-bottom:10px}
+    .solution-main-card>p{color:var(--text);margin-bottom:16px}
+    .mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .mode-card{border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.22);border-radius:14px;padding:16px}
+    .mode-card h4{font-size:18px;color:var(--accent);margin-bottom:8px}
+    .mode-card p{margin:0;color:var(--text);font-size:15px;line-height:1.7}
+    .solution-pillars{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .pillar-card{border:1px solid rgba(255,255,255,.17);background:rgba(44,44,44,.45);border-radius:14px;padding:16px}
+    .pillar-card h4{font-size:17px;margin-bottom:8px;color:var(--accent)}
+    .pillar-card p{margin:0;color:var(--text);font-size:14px;line-height:1.65}
+    .agent-node--tl,.agent-node--bl,.agent-node--tr,.agent-node--br{top:auto;left:auto;right:auto}
     .tech-slider{position:relative;overflow:hidden;padding:10px 0;mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.2) 12%,#000 50%,rgba(0,0,0,.2) 88%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.2) 12%,#000 50%,rgba(0,0,0,.2) 88%,transparent 100%)}
     .tech-track{display:flex;align-items:center;gap:28px;min-width:max-content;animation:techFlow 22s linear infinite;will-change:transform}
     @keyframes techFlow{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -136,6 +173,7 @@
       .how-system-layout .section-heading{margin:0 0 18px}
       .how-system-layout .roadmap-vertical{margin-top:0}
     }
+
     @media (max-width:900px){
       body::after{opacity:.02}
       .page-bg{background:#020202}
@@ -144,7 +182,7 @@
       .bg-orb--gold,.bg-orb--amber,.bg-orb--sun{opacity:.25}
       .light-source--top-right{right:-26%;top:-24%;width:76%;height:76%;opacity:.72}
       .light-source--hero-focus{left:-24%;bottom:-24%;width:82%;height:82%;filter:blur(86px);opacity:.74}
-      .hero-results,.solution-grid,.architecture-agents{grid-template-columns:1fr}
+      .hero-results{grid-template-columns:1fr}
       .logo-dot{color:var(--accent)}
     .header-nav{display:none}
       .nav-toggle{display:flex}
@@ -154,8 +192,14 @@
       .roadmap-vertical::before{left:18px;transform:none}
       .roadmap-item{grid-template-columns:36px 1fr;min-height:auto;align-items:flex-start;gap:14px}
       .roadmap-content{max-width:none}
-      .roadmap-item.left .roadmap-content,.roadmap-item.right .roadmap-content{grid-column:2;justify-self:start;text-align:left;padding:0}
+      .roadmap-item.left .roadmap-content,
+      .roadmap-item.right .roadmap-content{grid-column:2;justify-self:start;text-align:left;padding:0}
       .roadmap-marker{grid-column:1;justify-self:center;width:24px;height:24px;box-shadow:0 0 0 5px rgba(var(--accent-rgb),.08);margin-top:4px}
+      .architecture-system{min-height:auto}
+      .architecture-road{display:none}
+      .architecture-agents{grid-template-columns:1fr}
+      .mode-grid,.solution-pillars{grid-template-columns:1fr}
+      .agent-node{width:100%}
     }
     /* Этот класс блокирует скролл страницы */
     .lock-scroll {
@@ -203,11 +247,27 @@
       <div class="bg-orb bg-orb--amber"></div>
       <div class="bg-orb bg-orb--sun"></div>
     </div>
+
     <div class="grid-base">
-      <svg id="svgBase"><defs><pattern id="grid-base-pattern" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M 44 0 L 0 0 0 44" fill="none" stroke="rgba(255,190,70,0.25)" stroke-width="0.82"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid-base-pattern)"/></svg>
+      <svg id="svgBase">
+        <defs>
+          <pattern id="grid-base-pattern" width="44" height="44" patternUnits="userSpaceOnUse">
+            <path d="M 44 0 L 0 0 0 44" fill="none" stroke="rgba(255,190,70,0.25)" stroke-width="0.82"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid-base-pattern)"/>
+      </svg>
     </div>
+
     <div class="grid-reveal">
-      <svg id="svgReveal"><defs><pattern id="grid-reveal-pattern" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M 44 0 L 0 0 0 44" fill="none" stroke="rgba(255,215,80,1)" stroke-width="1.1"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid-reveal-pattern)"/></svg>
+      <svg id="svgReveal">
+        <defs>
+          <pattern id="grid-reveal-pattern" width="44" height="44" patternUnits="userSpaceOnUse">
+            <path d="M 44 0 L 0 0 0 44" fill="none" stroke="rgba(255,215,80,1)" stroke-width="1.1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid-reveal-pattern)"/>
+      </svg>
     </div>
   </div>
   <div class="page-grid" aria-hidden="true"></div>
@@ -215,6 +275,7 @@
   <header id="hdr">
     <div class="header-top">
       <a class="header-logo" href="index.html">Aivion<span class="logo-dot">.</span></a>
+
       <nav class="header-nav" aria-label="Навигация по кейсу">
         <a class="nav-link" href="#problem">Проблема</a>
         <a class="nav-link" href="#solution">Решение</a>
@@ -222,6 +283,7 @@
         <a class="nav-link" href="#stack">Стек</a>
         <a class="nav-link nav-cta" href="#" data-open-brief>Обсудить задачу</a>
       </nav>
+
       <button class="nav-toggle" id="menuToggle" type="button" aria-expanded="false" aria-label="Открыть меню">
         <span></span><span></span><span></span>
       </button>
@@ -241,79 +303,88 @@
     <div class="hero-top-actions">
       <a class="cases-btn" href="index.html#portfolio">← Другие кейсы</a>
     </div>
-    <h1 class="case-title reveal">Корпоративная <br> система <span class="hi">PBMS</span></h1>
-    <p class="case-lead reveal">IT-департамент цифровой компании столкнулся с хаосом в работе над проектами и риском потери файлов. Мы разработали кастомную PBMS-платформу на Flask, которая объединила управление проектами, аудит действий и автоматическое резервное копирование с проверкой целостности.</p>
+    <h1 class="case-title reveal">AI-ассистент <br> генерации <span class="hi">ТЗ</span></h1>
+    <p class="case-lead reveal">К нам обратилась студия продуктового дизайна (NDA), которая делает сложные интерфейсы для FinTech и SaaS. Команда регулярно получала запросы в стиле «сделайте как Apple, но для трейдинга», и перевод таких формулировок в точные спецификации занимал <span class="accent-white">слишком много ручной работы</span> и времени</p>
   </div>
 
   <div class="section-divider"></div>
 
   <article class="case-body warm-section">
     <div class="section-heading reveal" id="problem"><h2>Проблема</h2></div>
-    <p class="reveal">Клиенту требовалась единая внутренняя система, в которой сотрудники могли бы прозрачно вести проекты, контролировать дедлайны и безопасно хранить рабочие артефакты без ручных операций.</p>
-    <p class="reveal">До внедрения PBMS проекты велись в отдельных таблицах и чатах, а бэкапы выполнялись вручную и нерегулярно. В результате руководители не видели полную картину по статусам, а инфраструктурная команда постоянно подвергалась риску потери данных.</p>
-    <p class="reveal"><span class="problem-accent">Вывод:</span> компании нужна была одна корпоративная система, которая объединяет управление проектами, резервное копирование и разграничение прав доступа на основе ролей в закрытом контуре.</p>
+    <p class="reveal">После брифа менеджеры и дизайнеры вручную декомпозировали запрос клиента, затем собирали ТЗ в свободной форме. До 30% времени предпроектной фазы уходило на рутину: формулировки, уточнения, синхронизации и правки.</p>
+    <p class="reveal">Качество документации зависело от конкретного исполнителя: каждый писал по-своему, а описания анимаций и визуальных эффектов оставались субъективными. На стыке дизайна и разработки это вызывало разночтения и дополнительные итерации.</p>
+    <p class="reveal"><span class="problem-accent">Вывод:</span> студии нужен был инструмент, который превращает абстрактный клиентский запрос в стандартизированное, технически точное ТЗ за минуты, а не за два рабочих дня.</p>
 
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="solution"><h2>Решение</h2></div>
-    <p class="reveal">Мы разработали монолитное веб-приложение PBMS (Project &amp; Backup Management System) на Flask. Система объединила трекинг задач, автоматические бэкапы, проверку целостности архивов и централизованное управление доступами.</p>
-    <p class="reveal">Архитектура закрыла сразу два класса задач: операционный контроль проектов и инфраструктурную защиту данных. Команда получила один интерфейс вместо разрозненных инструментов и ручных сценариев.</p>
-
-    <div class="solution-grid reveal">
-      <article class="solution-card">
-        <h3>Гибкое управление проектами</h3>
-        <p>Трекинг прогресса строится на Milestones, приоритеты подсвечиваются визуально, а просроченные дедлайны автоматически выделяются для быстрого реагирования.</p>
-      </article>
-      <article class="solution-card">
-        <h3>Автоматические бэкапы</h3>
-        <p>APScheduler запускает ночные резервные копии активных проектов по расписанию, а также поддерживает ручные снапшоты перед критичными изменениями.</p>
-      </article>
-      <article class="solution-card">
-        <h3>Проверка целостности</h3>
-        <p>Каждый ZIP-архив сопровождается `metadata.json` и `контрольную сумму SHA-256`, что позволяет быстро проверить корректность хранения и исключить повреждения данных.</p>
-      </article>
-      <article class="solution-card">
-        <h3>RBAC и аудит действий</h3>
-        <p>Ролевая модель ограничивает доступ по зонам ответственности, а Audit Log фиксирует входы, скачивания и административные операции с IP и User-Agent.</p>
-      </article>
+    <div class="solution-intro reveal">
+      <p>Мы разработали веб-приложение на Flask с многоагентной архитектурой на базе Google Gemini (gemma-3-27b-it), которое автоматически формирует структурированные дизайн-спецификации в JSON.</p>
+      <p>Вместо длинной ручной подготовки команда получила предсказуемый конвейер: от декомпозиции запроса до аудита готового ТЗ и итеративной доработки без потери контекста.</p>
     </div>
 
-    <div class="architecture-system reveal" aria-label="Архитектура PBMS">
-      <div class="architecture-agents">
-        <article class="agent-node"><h4>Project Hub</h4><p>Централизует проекты, этапы и задачи: от старта до архивирования, включая приоритеты, дедлайны и связанный контекст команды.</p></article>
-        <article class="agent-node"><h4>Backup Engine</h4><p>Формирует nightly-бэкапы и ручные snapshot-архивы, управляет расписанием и обеспечивает единый поток резервирования для всех активных проектов.</p></article>
-        <article class="agent-node"><h4>Integrity Guard</h4><p>Вычисляет SHA-256, создаёт `metadata.json` и валидирует архивы до скачивания и восстановления, чтобы минимизировать риск битых копий.</p></article>
-        <article class="agent-node"><h4>Access &amp; Audit Layer</h4><p>Контролирует RBAC-права и ведёт журнал действий для расследования инцидентов и проверки соблюдения регламентов.</p></article>
+    <article class="solution-main-card reveal">
+      <h3>Решение объединяет логику, контроль качества и масштабирование</h3>
+      <p>Мы собрали бизнес-логику, ключевые особенности и дополнительные компоненты в три продуктовые карточки, чтобы команда работала по единому стандарту в каждом проекте.</p>
+      <div class="solution-pillars">
+        <article class="pillar-card"><h4>Декомпозиция клиентского запроса</h4><p>Система превращает абстрактные формулировки в конкретные сущности, цели и UX-паттерны. Это убирает размытость на старте и сокращает число уточняющих циклов с заказчиком.</p></article>
+        <article class="pillar-card"><h4>Генерация стандартизированного JSON-ТЗ</h4><p>Выходной документ содержит точные параметры интерфейса, включая анимации (stiffness, damping), структуру дизайн-системы и технические ограничения. Результат сразу совместим с рабочими инструментами команды.</p></article>
+        <article class="pillar-card"><h4>Самовалидация и итеративный аудит</h4><p>Встроенный аудитор проверяет полноту спецификации, корректность JSON и соответствие требованиям. При несоответствиях запускается автоматическая доработка без ручного перезапуска процесса.</p></article>
       </div>
-    </div>
-    <p class="reveal visible">Такой контур дал компании <span class="accent-yellow">одновременно прозрачность процессов и контроль за сохранностью данных</span>.</p>
+    </article>
+
+    <section class="architecture-system reveal" aria-label="Агентная архитектура решения">
+      <div class="architecture-agents">
+        <article class="agent-node agent-node--tl"><h4>Principal Product Analyst</h4><p>Разбирает исходный запрос клиента, формирует структуру требований, сценарии использования и UX-приоритеты для следующего слоя.</p></article>
+        <article class="agent-node agent-node--tr"><h4>Principal Product Designer</h4><p>Преобразует аналитическую структуру в детализированное JSON-ТЗ: компоненты интерфейса, состояния, анимации и правила визуальной системы.</p></article>
+        <article class="agent-node agent-node--bl"><h4>Design Auditor</h4><p>Проверяет спецификацию на полноту и качество, даёт обратную связь и инициирует повторные итерации до прохождения требований.</p></article>
+        <article class="agent-node agent-node--br"><h4>Template &amp; Style Curator</h4><p>Подключает библиотеку проверенных стилевых шаблонов (Data-First Futurism, Glassmorphism Elegance, Apple Minimalist) для быстрого создания альтернативных концепций.</p></article>
+      </div>
+    </section>
 
     <div class="block-sep"></div>
-
+    
+    
     <section class="how-system-layout" aria-label="Как работает система">
       <div class="roadmap-copy">
         <div class="section-heading reveal" id="example"><h2>Как работает система</h2></div>
-        <p class="reveal visible">После внедрения PBMS команда работает в едином цикле: постановка и отслеживание задач, автоматический ночной бэкап, проверка целостности и контроль действий пользователей через Audit Log.</p>
+        <p class="reveal visible">После получения брифа система проходит несколько этапов: анализ запроса, проектирование структуры спецификации, генерация JSON и автоматический аудит. Благодаря этому документация формируется в едином стандарте независимо от исполнителя.</p>
       </div>
-      <div class="roadmap-vertical reveal" aria-label="Roadmap работы PBMS">
+
+      <div class="roadmap-vertical reveal" aria-label="Roadmap генерации дизайн-спецификации">
         <article class="roadmap-item left">
-          <div class="roadmap-content"><h4>Постановка и декомпозиция задач</h4><p>Проект создаётся в едином реестре: фиксируются сроки, Milestones, приоритеты и ответственные, чтобы исключить разрывы в коммуникации.</p></div>
+          <div class="roadmap-content">
+            <h4>Сбор и декомпозиция входных данных</h4>
+            <p>Система выделяет из запроса цели продукта, ограничения, целевые сценарии и ожидания по стилю интерфейса.</p>
+          </div>
           <span class="roadmap-marker"></span>
         </article>
         <article class="roadmap-item right">
           <span class="roadmap-marker"></span>
-          <div class="roadmap-content"><h4>Плановые ночные бэкапы</h4><p>BackgroundScheduler по Cron запускает резервирование активных проектов без ручного вмешательства администраторов.</p></div>
+          <div class="roadmap-content">
+            <h4>Генерация базовой структуры ТЗ</h4>
+            <p>Агент-аналитик передаёт структурированный контекст дизайнерскому агенту, который формирует каркас спецификации для интерфейса.</p>
+          </div>
         </article>
         <article class="roadmap-item left">
-          <div class="roadmap-content"><h4>Проверка целостности архивов</h4><p>Для каждого архива формируются `metadata.json` и `SHA-256 checksum`, чтобы контролировать корректность хранения и передачи копий.</p></div>
+          <div class="roadmap-content">
+            <h4>Детализация UI и анимаций</h4>
+            <p>Спецификация дополняется компонентами дизайн-системы, состояниями и параметрами motion-дизайна с точными техническими значениями.</p>
+          </div>
           <span class="roadmap-marker"></span>
         </article>
         <article class="roadmap-item right">
           <span class="roadmap-marker"></span>
-          <div class="roadmap-content"><h4>Ролевой доступ и аудит событий</h4><p>RBAC ограничивает операции по ролям, а журнал аудита фиксирует критичные действия пользователей с техническими метаданными.</p></div>
+          <div class="roadmap-content">
+            <h4>Автоматическая проверка и правки</h4>
+            <p>Design Auditor оценивает полноту, валидность JSON и соответствие требованиям; при необходимости запускает повторные итерации.</p>
+          </div>
         </article>
         <article class="roadmap-item left">
-          <div class="roadmap-content"><h4>Быстрое восстановление и контроль</h4><p>Команда может восстановить проект из последней валидной копии и быстро провести внутреннюю проверку по истории действий и статусам.</p></div>
+          <div class="roadmap-content">
+            <h4>Экспорт и интеграция в процесс</h4>
+            <p>Готовый JSON передаётся в рабочие инструменты команды, а также используется для быстрого сравнения альтернативных концепций в разных стилях.</p>
+          </div>
           <span class="roadmap-marker"></span>
         </article>
       </div>
@@ -323,9 +394,18 @@
 
     <div class="section-heading reveal" id="results"><h2>Результаты</h2></div>
     <div class="hero-results reveal" aria-label="Ключевые результаты">
-      <div class="metric-card"><div class="metric-value">Без потери данных</div><div class="metric-note">После запуска nightly-бэкапов были исключены инциденты утраты проектных файлов в рабочем контуре.</div></div>
-      <div class="metric-card"><div class="metric-value">Прозрачность</div><div class="metric-note">Руководители получили сквозную видимость статусов, приоритетов и действий сотрудников в одной панели.</div></div>
-      <div class="metric-card"><div class="metric-value">Быстрый поиск</div><div class="metric-note">Единый контур проекта сократил время на поиск документации и связанных артефактов.</div></div>
+      <div class="metric-card">
+        <div class="metric-value">2 дня → 2 часа</div>
+        <div class="metric-note">Подготовка технического задания сократилась с ~2 рабочих дней до ~2 часов</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">30% → 10%</div>
+        <div class="metric-note">Доля времени на рутинные задачи снизилась с 30% проекта до 10%</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">Стандарт ТЗ</div>
+        <div class="metric-note">Качество документации перестало зависеть от конкретного менеджера или дизайнера.</div>
+      </div>
     </div>
 
     <div class="block-sep"></div>
@@ -335,19 +415,19 @@
       <div class="tech-track" id="techTrack">
         <span class="tech-chip">Python</span>
         <span class="tech-chip">Flask</span>
-        <span class="tech-chip">SQLAlchemy</span>
-        <span class="tech-chip">APScheduler</span>
-        <span class="tech-chip">RBAC</span>
-        <span class="tech-chip">SHA-256 Integrity Check</span>
-        <span class="tech-chip">Quill.js</span>
-        <span class="tech-chip">SQLite / PostgreSQL-ready</span>
+        <span class="tech-chip">Google Generative AI SDK</span>
+        <span class="tech-chip">Gemini (gemma-3-27b-it)</span>
+        <span class="tech-chip">Multi-Agent Orchestration</span>
+        <span class="tech-chip">JSON Schema Validation</span>
+        <span class="tech-chip">Retry &amp; Feedback Loop</span>
+        <span class="tech-chip">Prompt Template Library</span>
       </div>
     </div>
 
     <div class="cta-wrap reveal" id="cta">
-      <h3>Обсудим внедрение корпоративной PBMS-системы</h3>
-      <p>Покажем, как объединить управление проектами, защиту данных и аудит действий в одном безопасном интерфейсе под задачи вашей команды.</p>
-      <a href="#" class="cta-btn" id="openBriefBtn">Запросить архитектуру PBMS</a>
+      <h3>Обсудим ваш документооборот и подготовку ТЗ</h3>
+      <p>Покажем, как автоматизировать подготовку спецификаций, стандартизировать качество документов и ускорить запуск новых проектов без расширения штата.</p>
+      <a href="#" class="cta-btn" id="openBriefBtn">Запросить аудит документации</a>
     </div>
   </article>
 
@@ -437,8 +517,8 @@
       document.body.style.overflow = 'hidden';
     }
 
-    openBriefBtns.forEach((button) => {
-      button?.addEventListener('click', (event) => {
+    openBriefBtns.forEach((btn) => {
+      btn?.addEventListener('click', (event) => {
         event.preventDefault();
         openBriefModal();
         closeMenu();
@@ -446,9 +526,22 @@
     });
 
     closeBriefBtn?.addEventListener('click', closeBriefModal);
-    briefModal?.addEventListener('click', (event) => { if (event.target === briefModal) closeBriefModal(); });
-    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') { closeBriefModal(); closeMenu(); } });
-    briefForm?.addEventListener('submit', (event) => { event.preventDefault(); closeBriefModal(); });
+
+    briefModal?.addEventListener('click', (event) => {
+      if (event.target === briefModal) closeBriefModal();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeBriefModal();
+        closeMenu();
+      }
+    });
+
+    briefForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      closeBriefModal();
+    });
 
     const techTrack = document.getElementById('techTrack');
     if (techTrack) {
@@ -476,6 +569,7 @@
         if (select !== except) select.classList.remove('open');
       });
     }
+
     modalSelects.forEach((select) => {
       const button = select.querySelector('.modal-select-btn');
       const hiddenInput = select.querySelector('input[type="hidden"]');
@@ -497,6 +591,7 @@
         });
       });
     });
+
     document.addEventListener('click', (event) => {
       if (!event.target.closest('.modal-select')) closeAllSelects();
     });
@@ -507,16 +602,21 @@
 
     const reveals = document.querySelectorAll('.reveal');
     const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-    reveals.forEach((el) => obs.observe(el));
+
+    reveals.forEach(el => obs.observe(el));
 
     const roadmapItems = document.querySelectorAll('.roadmap-item');
     const roadmapObs = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
     }, { threshold: 0.2, rootMargin: '0px 0px -15% 0px' });
     roadmapItems.forEach((item) => roadmapObs.observe(item));
@@ -535,12 +635,15 @@
       const svgReveal = document.getElementById('svgReveal');
       const patBase = document.getElementById('grid-base-pattern');
       const patReveal = document.getElementById('grid-reveal-pattern');
+
       if (!bg || !svgBase || !svgReveal || !patBase || !patReveal) return;
+
       const CELL = 44;
       const SPX = 0.42;
       const SPY = 0.28;
       let offX = 0;
       let offY = 0;
+
       function setSize() {
         const w = window.innerWidth;
         const h = window.innerHeight;
@@ -550,6 +653,7 @@
           svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
         });
       }
+
       function tick() {
         offX = (offX + SPX) % CELL;
         offY = (offY + SPY) % CELL;
@@ -559,14 +663,17 @@
         patReveal.setAttribute('y', String(offY));
         requestAnimationFrame(tick);
       }
+
       window.addEventListener('mousemove', (e) => {
         bg.style.setProperty('--cx', `${e.clientX}px`);
         bg.style.setProperty('--cy', `${e.clientY}px`);
       }, { passive: true });
+
       window.addEventListener('mouseleave', () => {
         bg.style.setProperty('--cx', '-500px');
         bg.style.setProperty('--cy', '-500px');
       });
+
       setSize();
       window.addEventListener('resize', setSize);
       requestAnimationFrame(tick);

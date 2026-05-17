@@ -7,7 +7,7 @@
   <meta name="description" content="Кейс о среде для пакетного тестирования и отладки промптов локальных LLM: быстрые A/B-прогоны, контроль параметров и полная приватность данных."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700&family=Raleway:wght@600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --bg:#000;
@@ -50,7 +50,8 @@
     header::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0);border-bottom:1px solid rgba(255,255,255,0);transition:background .4s,border-color .4s}
     header.scrolled::before{background:rgba(0,0,0,0.72);backdrop-filter:blur(20px);border-color:rgba(255,255,255,0.08)}
     .header-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:24px;width:min(100%,1320px);height:100%;margin:0 auto}
-    .header-logo{font-family:"Playfair Display", Georgia, serif;font-weight:700;font-size:22px;letter-spacing:.04em;font-style:italic;color:#fff;text-decoration:none;flex-shrink:0}
+    .header-logo{font-family:"Raleway","Montserrat",sans-serif;font-weight:700;font-size:22px;letter-spacing:.02em;font-style:normal;color:#fff;text-decoration:none;flex-shrink:0}
+    .logo-dot{color:var(--accent)}
     .header-nav{display:flex;align-items:center;justify-content:flex-end;gap:4px;margin-left:auto}
     .nav-link{padding:8px 14px;border-radius:999px;border:1px solid transparent;text-decoration:none;color:rgba(235,235,235,0.52);font-size:12px;font-family:"Montserrat",sans-serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:color .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
     .nav-link:hover{color:var(--text)}
@@ -143,7 +144,7 @@
     .footer-inner{width:min(100% - 32px,1240px);margin:0 auto}
     .footer-top{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,0.18)}
     .footer-brand{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
-    .footer-logo{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:22px;letter-spacing:0.04em;font-style:italic;color:#fff;text-decoration:none}
+    .footer-logo{font-family:"Raleway","Montserrat",sans-serif;font-weight:700;font-size:22px;letter-spacing:0.02em;font-style:normal;color:#fff;text-decoration:none}
     .footer-tagline{font-size:14px;color:var(--muted);line-height:1.7;max-width:300px}
     .footer-nav-group{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
     .footer-col{display:flex;flex-direction:column;gap:14px}
@@ -172,7 +173,7 @@
 
   <header id="hdr">
     <div class="header-top">
-      <a class="header-logo" href="index.html">Aivion</a>
+      <a class="header-logo" href="index.html">Aivion<span class="logo-dot">.</span></a>
       <nav class="header-nav" aria-label="Навигация по кейсу">
         <a class="nav-link" href="#problem">Проблема</a>
         <a class="nav-link" href="#solution">Решение</a>
@@ -309,7 +310,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <a class="footer-logo" href="index.html">Aivion</a>
+        <a class="footer-logo" href="index.html">Aivion<span class="logo-dot">.</span></a>
         <p class="footer-tagline">AI-системы, автоматизация и внутренние цифровые контуры — для команд, которые хотят работать умнее.</p>
       </div>
       <div class="footer-nav-group">
