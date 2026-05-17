@@ -18,6 +18,11 @@ const contentTypes = {
 function resolvePath(urlPath) {
   if (urlPath === "/" || urlPath === "/Aivion.html") return "index.html";
 
+  // ПРАГМАТИЧНЫЙ РОУТИНГ ДЛЯ ЮР. ДОКУМЕНТОВ:
+  // Гарантирует корректное чтение файлов, даже если в ссылке на сайте не указано .html
+  if (urlPath === "/privacy" || urlPath === "/privacy.html") return "privacy.html";
+  if (urlPath === "/consent" || urlPath === "/consent.html") return "consent.html";
+
   const cleanPath = decodeURIComponent(urlPath).replace(/^\/+/, "");
   if (!cleanPath || cleanPath.includes("..")) return null;
 
@@ -36,6 +41,7 @@ async function serveFile(relativePath) {
   const file = Bun.file(`${root}/${relativePath}`);
 
   if (!(await file.exists())) {
+    console.error(`[404 NOT FOUND]: Ошибка чтения пути "${root}/${relativePath}"`);
     return new Response("Файл не найден", { status: 404 });
   }
 
@@ -51,30 +57,29 @@ Bun.serve({
   async fetch(request) {
     const url = new URL(request.url);
 
-    // Роутинг для API обработки заявок
+    // 1. ОБРАБОТКА КОНТУРА ЗАЯВОК (POST API)
     if (request.method === "POST" && url.pathname === "/api/contact") {
       try {
         const body = await request.json();
 
-        // 1. Проверка Honeypot-ловушки для ботов
+        // Проверка скрытого поля Honeypot против спам-ботов
         if (body.website && body.website.trim() !== "") {
-          console.warn(`[Honeypot Triggered] Бот заблокирован. Payload:`, body);
-          // Возвращаем успех, чтобы спамер думал, что всё ок, но не пускаем дальше
-          return new Response(JSON.stringify({ ok: true, msg: "Silent drop" }), {
+          console.warn("[Honeypot]: Заблокирована автоматическая отправка ботом.");
+          return new Response(JSON.stringify({ ok: true, message: "Silent drop" }), {
             headers: { "Content-Type": "application/json" }
           });
         }
 
-        // 2. Валидация критически важных полей
+        // Валидация обязательных полей
         if (!body.firstName || !body.contact || !body.details) {
-          return new Response(JSON.stringify({ ok: false, message: "Проверьте обязательные поля." }), {
+          return new Response(JSON.stringify({ ok: false, message: "Заполните обязательные поля." }), {
             status: 400,
             headers: { "Content-Type": "application/json" }
           });
         }
 
-        // 3. Логирование и дальнейшая обработка данных (сюда встраивается отправка в Telegram/CRM)
-        console.log(`[New Lead Received]:`, JSON.stringify(body, null, 2));
+        // Вывод лида в консоль сервера (здесь можно подключить интеграцию с Telegram-ботом/CRM)
+        console.log("[Новая заявка с сайта]:", JSON.stringify(body, null, 2));
 
         return new Response(JSON.stringify({ ok: true }), {
           status: 200,
@@ -82,7 +87,7 @@ Bun.serve({
         });
 
       } catch (err) {
-        console.error(`[API Error]:`, err);
+        console.error("[API Error]:", err);
         return new Response(JSON.stringify({ ok: false, message: "Внутренняя ошибка сервера." }), {
           status: 500,
           headers: { "Content-Type": "application/json" }
@@ -90,7 +95,7 @@ Bun.serve({
       }
     }
 
-    // Роутинг для статических файлов
+    // 2. ОБРАБОТКА СТАТИКИ (GET запросы страниц, скриптов, стилей)
     const relativePath = resolvePath(url.pathname);
     if (!relativePath) {
       return new Response("Некорректный путь", { status: 400 });
@@ -100,4 +105,4 @@ Bun.serve({
   }
 });
 
-console.log(`Сервер запущен: http://localhost:${port}`);
+console.log(`Сервер успешно запущен на порту: ${port}`);
