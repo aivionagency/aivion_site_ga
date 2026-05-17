@@ -454,12 +454,34 @@
     /* ═══ PORTFOLIO STACKING ════════════════════════════════ */
     .portfolio-section { padding:100px 0 0; position:relative; }
     .portfolio-stack { position:relative; }
+
     .portfolio-card {
-      position:sticky; margin-bottom:0;
-      display:flex; flex-direction:column; gap:18px;
-      transform-origin:top center;
-      transition:box-shadow .3s var(--ease);
+      position: sticky;
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      transform-origin: top center;
+
+      /* КРИТИЧЕСКИЙ ФИКС ЛАГОВ: Выносим слой на аппаратное ускорение видеокарты */
+      will-change: transform, top;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+
+      /* Оптимизация для браузера: отключаем дорогой пересчет блюра при движении,
+         если это вызывает просадки FPS, и переопределяем transition из .glass-card */
+      backdrop-filter: blur(8px) !important; /* Снижаем радиус до стабильного для sticky */
+      transition: box-shadow .3s var(--ease), transform 0.2s linear !important;
     }
+
+    /* Отключаем дестабилизирующий вертикальный сдвиг при ховере во время залипания */
+    .portfolio-card:hover {
+      transform: translateZ(0) !important;
+      box-shadow: 0 20px 40px rgba(232,146,10,0.12), var(--shadow) !important;
+    }
+
     .portfolio-card__meta {
       display:flex; align-items:center; gap:12px; flex-wrap:wrap;
     }
