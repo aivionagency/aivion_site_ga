@@ -68,7 +68,23 @@
     header::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0);border-bottom:1px solid rgba(255,255,255,0);transition:background .4s,border-color .4s}
     header.scrolled::before{background:rgba(0,0,0,0.72);backdrop-filter:blur(20px);border-color:rgba(255,255,255,0.08)}
     .header-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:24px;width:min(100%,1320px);height:100%;margin:0 auto}
-    .header-logo{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:22px;letter-spacing:.04em;font-style:italic;color:#fff;text-decoration:none;flex-shrink:0}
+    .logo {
+      position: relative;
+      z-index: 1;
+      font-family: "Playfair Display", Georgia, serif !important;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      text-decoration: none !important;
+      font-style: italic;
+      color: #ffffff !important;
+      flex-shrink: 0;
+    }
+
+    .footer-logo {
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
     .logo-dot{color:var(--accent)}
     .header-nav{display:flex;align-items:center;justify-content:flex-end;gap:4px;margin-left:auto}
     .nav-link{padding:8px 14px;border-radius:999px;border:1px solid transparent;text-decoration:none;color:rgba(235,235,235,0.52);font-size:12px;font-family:"Montserrat",sans-serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:color .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
@@ -274,7 +290,7 @@
 
   <header id="hdr">
     <div class="header-top">
-      <a class="header-logo" href="index.html">Aivion<span class="logo-dot">.</span></a>
+      <a class="logo" href="index.html">Aivion</a>
 
       <nav class="header-nav" aria-label="Навигация по кейсу">
         <a class="nav-link" href="#problem">Проблема</a>
@@ -435,7 +451,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <a class="footer-logo" href="index.html">Aivion<span class="logo-dot">.</span></a>
+        <a class="logo footer-logo" href="index.html">Aivion</a>
         <p class="footer-tagline">AI-системы, автоматизация и внутренние цифровые контуры — для команд, которые хотят работать умнее.</p>
       </div>
       <div class="footer-nav-group">

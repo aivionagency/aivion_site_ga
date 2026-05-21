@@ -14,11 +14,6 @@
     .cf-side h2{font-family:"Montserrat",sans-serif;font-size:clamp(22px,2.5vw,32px);font-weight:800;letter-spacing:-0.03em;color:#fff;line-height:1.2}
     .cf-side-text{font-family:"Montserrat",sans-serif;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7}
     .cf-eyebrow{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#E8920A}
-    .cf-scope-card{padding:20px;border-radius:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.10)}
-    .cf-scope-card h3{font-family:"Montserrat",sans-serif;font-size:15px;font-weight:700;margin-bottom:12px;color:#fff}
-    .cf-scope-list{list-style:none;display:flex;flex-direction:column;gap:8px}
-    .cf-scope-list li{font-family:"Montserrat",sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5;padding-left:16px;position:relative}
-    .cf-scope-list li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#E8920A}
     .cf-main{padding:44px 36px}
     .cf-form{display:flex;flex-direction:column;gap:18px}
     .cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -69,14 +64,6 @@
           <p class="cf-eyebrow">Запрос</p>
           <h2>Обсудим задачу предметно</h2>
           <p class="cf-side-text">Опишите задачу коротко и по сути. Мы используем только необходимые данные, чтобы связаться с вами и подготовить следующий шаг.</p>
-          <div class="cf-scope-card">
-            <h3>Что важно знать</h3>
-            <ul class="cf-scope-list">
-              <li>обязательные поля сведены к минимуму</li>
-              <li>согласие даётся отдельным действием</li>
-              <li>политика доступна до отправки формы</li>
-            </ul>
-          </div>
         </aside>
         <div class="cf-main">
           <form class="cf-form" id="cfForm">
