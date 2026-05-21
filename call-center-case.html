@@ -83,8 +83,18 @@
       display:flex;align-items:center;justify-content:space-between;
       gap:24px;width:min(100%,1320px);height:100%;margin:0 auto;
     }
-    .header-logo{font-family:"Raleway","Montserrat",sans-serif;font-weight:700;font-size:22px;letter-spacing:.02em;font-style:normal;color:#fff;text-decoration:none;flex-shrink:0}
-    .logo-dot{color:var(--accent)}
+    .header-logo {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      font-style: italic;
+      color: #ffffff;
+      text-decoration: none;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
     .header-nav{display:flex;align-items:center;justify-content:flex-end;gap:4px;margin-left:auto}
     .nav-link{
       padding:8px 14px;border-radius:999px;border:1px solid transparent;text-decoration:none;
@@ -246,7 +256,16 @@
     .footer-inner{width:min(100% - 32px,1240px);margin:0 auto}
     .footer-top{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,0.18)}
     .footer-brand{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
-    .footer-logo{font-family:"Raleway","Montserrat",sans-serif;font-weight:700;font-size:22px;letter-spacing:0.02em;font-style:normal;color:#fff;text-decoration:none}
+    .footer-logo {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 700;
+      font-size: 26px;
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+      font-style: italic;
+      color: #ffffff;
+      text-decoration: none;
+    }
     .footer-tagline{font-size:14px;color:var(--muted);line-height:1.7;max-width:300px}
     .footer-nav-group{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
     .footer-col{display:flex;flex-direction:column;gap:14px}
@@ -299,7 +318,7 @@
 
   <header id="hdr">
     <div class="header-top">
-      <a class="header-logo" href="index.html">Aivion<span class="logo-dot">.</span></a>
+      <a class="header-logo" href="index.html">Aivion</a>
 
       <nav class="header-nav" aria-label="Навигация по кейсу">
         <a class="nav-link" href="#problem">Проблема</a>
@@ -459,7 +478,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <a class="footer-logo" href="index.html">Aivion<span class="logo-dot">.</span></a>
+        <a class="footer-logo" href="index.html">Aivion</a>
         <p class="footer-tagline">AI-системы, автоматизация и внутренние цифровые контуры — для команд, которые хотят работать умнее.</p>
       </div>
       <div class="footer-nav-group">
