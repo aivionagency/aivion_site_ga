@@ -293,15 +293,6 @@
         <p>Ролевая модель ограничивает доступ по зонам ответственности, а Audit Log фиксирует входы, скачивания и административные операции с IP и User-Agent.</p>
       </article>
     </div>
-
-    <div class="architecture-system reveal" aria-label="Архитектура PBMS">
-      <div class="architecture-agents">
-        <article class="agent-node"><h4>Project Hub</h4><p>Централизует проекты, этапы и задачи: от старта до архивирования, включая приоритеты, дедлайны и связанный контекст команды.</p></article>
-        <article class="agent-node"><h4>Backup Engine</h4><p>Формирует nightly-бэкапы и ручные snapshot-архивы, управляет расписанием и обеспечивает единый поток резервирования для всех активных проектов.</p></article>
-        <article class="agent-node"><h4>Integrity Guard</h4><p>Вычисляет SHA-256, создаёт `metadata.json` и валидирует архивы до скачивания и восстановления, чтобы минимизировать риск битых копий.</p></article>
-        <article class="agent-node"><h4>Access &amp; Audit Layer</h4><p>Контролирует RBAC-права и ведёт журнал действий для расследования инцидентов и проверки соблюдения регламентов.</p></article>
-      </div>
-    </div>
     <p class="reveal visible">Такой контур дал компании <span class="accent-yellow">одновременно прозрачность процессов и контроль за сохранностью данных</span>.</p>
 
     <div class="block-sep"></div>
